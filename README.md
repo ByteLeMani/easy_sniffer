@@ -5,7 +5,7 @@ This tool allow you to automatically start tcpdump session on remote host and sa
 
 Thanks to **rsync** it is possibile to transfer quickly files from remote host to local machine
 
-Dependecies:
+Dependencies:
 - python3
 - coloredlogs (from pip)
 - tcpdump

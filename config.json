@@ -1,0 +1,19 @@
+{
+    "connection_info":{
+        "vulnbox_ip": "172.17.112.1",
+        "vulnbox_port" : 3022,
+        "user" : "root",
+        "ssh_key" : "chiave"
+
+    },
+    "tcpdump_info": {
+        "interface" : "any",
+        "remote_pcap_folder" : "/tmp/",
+        "local_pcap_folder" : "./dumps",
+        "max_packets" : 500,
+        "max_size" : 1,
+        "packet_name" : "pbub",
+        "sleep_time" : 30
+    }
+
+}

@@ -46,13 +46,13 @@ https://ubuntuforums.org/showthread.php?t=1501339
 https://answers.launchpad.net/ubuntu/+source/tcpdump/+question/168402
 
 ### Caronte integration
-Thanks to eciavatta is pretty easy to integrate Caronte. Just use `./feedCaronte .` inside the **local pcap folder** and keep it running.
+Thanks to [@eciavatta](https://github.com/eciavatt) it is pretty easy to integrate Caronte. Just use `./feedCaronte .` inside the **local pcap folder** and keep it running.
 In order to use it, you need to install `inotify-tools`
 
 ### TODO
 - [ ] Check if tcpdump is already running on remote host
 - [ ] Add better timing for rsync to be called
-- [ ] Add integration with Caronte and Flower (automatic pcap uploader)
+- [x] Add integration with Caronte and ~~Flower~~ (automatic pcap uploader)
 - [ ] Add basic web interface for easy settings management and for basic pcap analyzing (similiar to Flower)
 - [ ] Dockerize when finished
 

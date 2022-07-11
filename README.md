@@ -1,7 +1,7 @@
 # Easy Sniffer
 ### Network tool for A/D CTF
 
-This tool allow you to automatically start tcpdump session on remote host and save capture files (.pcap) on local machine (inspired by [Kanku-Sho](https://github.com/Shotokhan/kanku-sho) - [Shotokhan](https://github.com/Shotokhan))
+This tool allow you to automatically start tcpdump session on remote host and save capture files (.pcap) on local machine (inspired by [Kanku-Sho](https://github.com/Shotokhan/kanku-sho))
 
 Thanks to **rsync** it is possibile to transfer quickly files from remote host to local machine
 

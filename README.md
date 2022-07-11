@@ -1,7 +1,7 @@
 # Easy Sniffer
 ### Network tool for A/D CTF
 
-This tool allow you to automatically start tcpdump session on remote host and save capture files (.pcap) on local machine
+This tool allow you to automatically start tcpdump session on remote host and save capture files (.pcap) on local machine (inspired by [Kanku-Sho](https://github.com/Shotokhan/kanku-sho) - [Shotokhan](https://github.com/Shotokhan))
 
 Thanks to **rsync** it is possibile to transfer quickly files from remote host to local machine
 
@@ -46,7 +46,7 @@ https://ubuntuforums.org/showthread.php?t=1501339
 https://answers.launchpad.net/ubuntu/+source/tcpdump/+question/168402
 
 ### Caronte integration
-Thanks to [@eciavatta](https://github.com/eciavatt) it is pretty easy to integrate Caronte. Just use `./feedCaronte .` inside the **local pcap folder** and keep it running.
+Thanks to [@eciavatta](https://github.com/eciavatta) it is pretty easy to integrate Caronte. Just use `./feedCaronte .` inside the **local pcap folder** and keep it running.
 In order to use it, you need to install `inotify-tools`
 
 ### TODO

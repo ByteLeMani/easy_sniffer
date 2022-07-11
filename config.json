@@ -13,7 +13,8 @@
         "max_packets" : 500,
         "max_size" : 1,
         "packet_name" : "pbub",
-        "sleep_time" : 15
+        "sleep_time" : 15,
+        "script_name" : "rename_pcaps"
     }
 
 }

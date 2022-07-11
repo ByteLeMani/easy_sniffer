@@ -10,6 +10,7 @@ MAX_SIZE = "max_size"
 MAX_PACKETS = "max_packets"
 PACKET_NAME = "packet_name"
 SLEEP_TIME = "sleep_time"
+SCRIPT_NAME = "script_name"
 
 # --- Premade commands ---
 # https://explainshell.com/explain?cmd=tcpdump+-C++-W+-s0++-Z+-z++-U+-w+

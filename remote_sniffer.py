@@ -23,7 +23,7 @@ class Sniffer:
     # WARNING - Before executing this, make sure rename_caps script has been created on remote host!
     def start_tcpdump(self, tcpdump):
         remote_path = tcpdump[REMOTE_FOLDER] + tcpdump[PACKET_NAME] # i.e /tmp/pbub
-        remote_script = tcpdump[REMOTE_FOLDER] + "rename_pcaps"
+        remote_script = tcpdump[REMOTE_FOLDER] + tcpdump[SCRIPT_NAME]
         sniff_command = TCPDUMP_COMMAND.format(
             C = tcpdump[MAX_SIZE], 
             W = tcpdump[MAX_PACKETS], 

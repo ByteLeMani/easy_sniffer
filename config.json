@@ -8,12 +8,12 @@
     },
     "tcpdump_info": {
         "interface" : "any",
-        "remote_pcap_folder" : "/tmp/",
+        "remote_pcap_folder" : "/dumps/",
         "local_pcap_folder" : "./dumps",
         "max_packets" : 500,
         "max_size" : 1,
         "packet_name" : "pbub",
-        "sleep_time" : 30
+        "sleep_time" : 15
     }
 
 }

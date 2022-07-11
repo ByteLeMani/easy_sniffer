@@ -38,7 +38,7 @@ Example:
 **Make sure**:
 - **rename_caps** is present in same the same folder of **_remote_pcap_folder_**
 - tcpdump is up to date on remote host
-- to execute `aa-complain /bin/tcpdump` on remote host (apt-get install apparmor-utils). This is needed to make -z postcommand of tcpdump run properly (if not errore such as permission denied are issued and packets are not renamed in packetnameXXX.pcap, but remains packetname.pcapXXX - not good for Caronte)
+- to execute `aa-complain /bin/tcpdump` on remote host (apt-get install apparmor-utils). This is needed to make -z postcommand of tcpdump run properly (error such as permission denied could be issued and packets are not renamed in packetnameXXX.pcap, but remains packetname.pcapXXX - not good for Caronte)
 - **rsync** is installed both on local and remote machine
 
 For more information on point (3), look at:

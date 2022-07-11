@@ -8,7 +8,7 @@ Thanks to **rsync** it is possibile to transfer quickly files from remote host t
 Dependencies:
 - python3
 - coloredlogs (from pip)
-- tcpdump
+- tcpdump (on remote host)
 - rsync (both on local machine and remote host)
 
 ### Basic config

@@ -126,7 +126,7 @@ if __name__ == "__main__":
 
     sniffer.upload_file(tcpdump['script_name'])
 
-    os.system(f"./feedCaronte.sh {tcpdump[LOCAL_FOLDER]} > /dev/null")
+    # os.system(f"./feedCaronte.sh {tcpdump[LOCAL_FOLDER]} > /dev/null") # start this manually
 
     while True:
         sniffer.get_packets(tcpdump)

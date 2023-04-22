@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from utils import setup_config, check_file
 from constants import *
 import os
@@ -6,7 +7,8 @@ from time import sleep
 
 # Create a logger object.
 logger = logging.getLogger(__name__)
-coloredlogs.install(fmt = "%(levelname)s.%(name)s - %(message)s:", level='DEBUG', logger=logger)
+
+# coloredlogs.install(fmt = "%(levelname)s.%(name)s - %(message)s:", level='DEBUG', logger=logger)
 
 
 class Sniffer:
@@ -51,6 +53,34 @@ class Sniffer:
         logger.debug("Starting remote command...\n{}\n".format(remote_command))
         os.system(remote_command)
 
+    def upload_file(self, filename):
+        # remote_path contains *.pcap because we want rsync to only take packets that tcpdump has finished (tcpdump adds .pcap on postrotate, so when the packet is ready to be analyzed)
+
+        rsync_cmd = RSYNC_COMMAND_UPLOAD.format(
+            k = self.key,
+            p = self.port,
+            u = self.user,
+            i = self.ip,
+            r = tcpdump[REMOTE_FOLDER] + "",
+            l = filename
+        )
+
+        if not check_file(self.key):
+            logger.error(KEY_NOTFOUND.format(
+                k = self.key, 
+                u = self.user, 
+                i = self.ip
+            ))
+            exit(1)
+
+        logger.debug("Starting local command...\n{}\n".format(rsync_cmd))
+
+        os.system(rsync_cmd)
+
+        # if tcpdump[AUTO_UPLOAD_CARONTE]:
+        #     start_upload()
+
+
     def get_packets(self, tcpdump):
         
         # remote_path contains *.pcap because we want rsync to only take packets that tcpdump has finished (tcpdump adds .pcap on postrotate, so when the packet is ready to be analyzed)
@@ -84,9 +114,19 @@ class Sniffer:
 
 if __name__ == "__main__":
     # Get config.json info
-    conn, tcpdump = setup_config()
+    conn, tcpdump, verbose = setup_config()
 
-    sniffer = Sniffer(conn, tcpdump, True)
+    level = 'DEBUG' if verbose else 'INFO'  
+
+    coloredlogs.install(fmt = "%(levelname)s.%(name)s - %(message)s:", level=level, logger=logger)
+
+    sniffer = Sniffer(conn, tcpdump, False)
+
+    sniffer.get_packets(tcpdump)
+
+    sniffer.upload_file(tcpdump['script_name'])
+
+    os.system(f"./feedCaronte.sh {tcpdump[LOCAL_FOLDER]} > /dev/null")
 
     while True:
         sniffer.get_packets(tcpdump)

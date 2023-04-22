@@ -24,8 +24,9 @@ def setup_config(filename=None):
         global tcpdump, connection
         connection = config['connection_info']
         tcpdump = config['tcpdump_info']
+        verbose = config['verbose']
     except:
         print("Something is wrong in " + filename)
         exit(1)
 
-    return connection, tcpdump
+    return connection, tcpdump, verbose

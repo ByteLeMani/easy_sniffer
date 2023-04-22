@@ -19,6 +19,7 @@ TCPDUMP_COMMAND = "nohup tcpdump -C {C} -W {W} -s0 -i {i} -Z root -z {z} -U -w {
 
 REMOTE_COMMAND = "ssh -oStrictHostKeyChecking=no -i {k} -p {p} {u}@{i} '{c}'"
 RSYNC_COMMAND = 'rsync -avz -e "ssh -oStrictHostKeyChecking=no -i {k} -p {p}" {u}@{i}:{r} {l} 2>/dev/null'
+RSYNC_COMMAND_UPLOAD = 'rsync -avz -e "ssh -oStrictHostKeyChecking=no -i {k} -p {p}" {l} {u}@{i}:{r} 2>/dev/null'
 
 # --- ERRORS ---
 KEY_NOTFOUND  = """

@@ -17,26 +17,28 @@ Example:
 ```js
 {
     "connection_info":{
-        "vulnbox_ip": "172.17.112.1",
-        "vulnbox_port" : 3022,
+        "vulnbox_ip": "IP_YOUR_VIRTUAL_MACHINE",
+        "vulnbox_port" : 22,
         "user" : "root",
-        "ssh_key" : "chiave"
+        "ssh_key" : "YOUR_SSH_KEY"
+
     },
     "tcpdump_info": {
         "interface" : "any",
-        "remote_pcap_folder" : "/tmp/",
-        "local_pcap_folder" : "./dumps",
+        "remote_pcap_folder" : "",
+        "local_pcap_folder" : "",
         "max_packets" : 500,
         "max_size" : 1,
-        "packet_name" : "pbub",
-        "sleep_time" : 30
+        "packet_name" : "remote_capture",
+        "sleep_time" : 15,
+        "script_name" : "rename_pcaps"
     }
 }
 ```
 
 ### Attention
 **Make sure**:
-- **rename_caps** is present in same the same folder of **_remote_pcap_folder_**
+- **rename_pcaps** is present in same the same folder of **_remote_pcap_folder_**
 - tcpdump is up to date on remote host
 - to execute `aa-complain /bin/tcpdump` on remote host (apt-get install apparmor-utils). This is needed to make `-z postcommand` of tcpdump run properly (error such as permission denied could be issued and packets are not renamed in packetnameXXX.pcap, but remains packetname.pcapXXX - not good for Caronte)
 - **rsync** is installed both on local and remote machine

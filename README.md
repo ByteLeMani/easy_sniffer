@@ -14,7 +14,7 @@ Dependencies:
 ### Basic config
 All configuration must be done in **_config.json_**
 Example:
-```js
+```json
 {
     "connection_info":{
         "vulnbox_ip": "IP_YOUR_VIRTUAL_MACHINE",

@@ -14,6 +14,6 @@
         "max_size" : 1,
         "packet_name" : "remote_capture",
         "sleep_time" : 15,
-        "script_name" : "rename_pcaps"
+        "script_name" : "rename_pcap"
     }
 }

@@ -120,13 +120,13 @@ if __name__ == "__main__":
 
     coloredlogs.install(fmt = "%(levelname)s.%(name)s - %(message)s:", level=level, logger=logger)
 
-    sniffer = Sniffer(conn, tcpdump, False)
-
-    sniffer.get_packets(tcpdump)
+    sniffer = Sniffer(conn, tcpdump)
 
     sniffer.upload_file(tcpdump['script_name'])
 
-    # os.system(f"./feedCaronte.sh {tcpdump[LOCAL_FOLDER]} > /dev/null") # start this manually
+    sniffer.start_tcpdump(tcpdump)
+
+    sniffer.get_packets(tcpdump)
 
     while True:
         sniffer.get_packets(tcpdump)

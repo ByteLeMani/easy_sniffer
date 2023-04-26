@@ -15,5 +15,6 @@
         "packet_name" : "remote_capture",
         "sleep_time" : 15,
         "script_name" : "rename_pcap"
-    }
+    },
+    "verbose": true
 }

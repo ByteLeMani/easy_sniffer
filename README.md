@@ -10,7 +10,7 @@ Dependencies:
 - coloredlogs (from pip)
 - tcpdump (on remote host)
 - rsync (both on local machine and remote host)
-- inotify-tools
+- inotify-tools (on local machine)
 
 *It's suggested to use Linux or WSL 2.0*
 
@@ -56,7 +56,7 @@ Example:
 - **script_name**: script executed after the generation of the packet capture from tcpdump. This is needed because tcpdump doesn't automatically add the .pcap extension but Caronte needs it to work properly. If you set *packet_name* to be "packet_name.pcap" then tcpdump will generate packets named: "packet_name.pcap000", which is not good for Caronte.
 
 *Global*
-- **verbose**: set logging level to DEBUG if true or INFO if falze
+- **verbose**: set logging level to DEBUG if true or INFO if false
 
 ### SSH Key Generation
 You must first generate a SSH key to be able to execute remote commands with ssh
@@ -64,9 +64,9 @@ You must first generate a SSH key to be able to execute remote commands with ssh
 To do, follow:
 ```bash
     ssh-keygen -f key_name
-    ssh-copy-id -i key_name user@vulnbox_ip 
+    ssh-copy-id -i key_name.pub user@vulnbox_ip 
 ```
-
+`ssh-copy-id` just copies the public key you generated inside authorized_keys of the vulnbox_ip address machine
 
 ### Attention
 **Make sure**:

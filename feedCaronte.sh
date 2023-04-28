@@ -45,8 +45,8 @@ if [[ -z "$PCAP_DIR" ]]; then
 	exit 2
 fi
 
-inotifywait -m "$PCAP_DIR" -e close_write -e moved_to |
+inotifywait -m "$PCAP_DIR" -e moved_to |
 	while read dir action file; do
 		echo "The file $file appeared in directory $dir via $action"
-		curl -F "file=@$file" "http://localhost:3333/api/pcap/upload"
+		curl -F "file=@${dir}$file" "http://172.30.240.1:3333/api/pcap/upload"
 	done

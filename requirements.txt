@@ -1,0 +1,4 @@
+coloredlogs==15.0.1
+decorator==5.1.1
+fabric==3.0.1
+fabric2==3.0.1

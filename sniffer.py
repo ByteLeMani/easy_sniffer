@@ -58,13 +58,26 @@ class Sniffer:
     def start_tcpdump(self):
         cfg = self.tcpdump_cfg
 
-        self.command_wrapper(f"mkdir {cfg['remote_pcap_folder']}")
+        
+        # Create remote folder and upload rename_script
+        try:
+            self.command_wrapper(f"mkdir {cfg['remote_pcap_folder']}")
+        except:
+            logger.debug("Remote folder already exists!")
+            pass
 
+        transfers.rsync(
+            self.connection, 
+            source = cfg["script_name"], 
+            target = f"{cfg['remote_pcap_folder']}{cfg['script_name']}"
+        )
+
+        # This command is your choice.
         tpcdump_cmd = "nohup tcpdump -C {C} -W {W} -s0 -i {i} -Z root -z {z} -U -w {w} not port 22  > /dev/null 2>&1 & echo started".format(
             C = cfg['max_size'], 
             W = cfg['max_packets'], 
             i = cfg['interface'],
-            z = cfg['script_name'],
+            z = f"{cfg['remote_pcap_folder']}{cfg['script_name']}",
             w = f"{cfg['remote_pcap_folder']}{cfg['packet_name']}")
         
         # First check if tcpdump is already running. If not, run tcpdump
@@ -75,11 +88,15 @@ class Sniffer:
     def start_rsync(self, repeat=0):
         cfg = self.tcpdump_cfg
         while True:
-            transfers.rsync(
-                self.connection, 
-                source = cfg['remote_pcap_folder'],
-                target = cfg['local_pcap_folder'],
-                remote_to_local=True)
+            try:
+                res = transfers.rsync(
+                    self.connection, 
+                    source = f"{cfg['remote_pcap_folder']}*.pcap",
+                    target = cfg['local_pcap_folder'],
+                    remote_to_local=True)
+            except:
+                logger.error("Something went wrong with RSYNC. Retrying...")
+                continue
             
             if not repeat:
                 break

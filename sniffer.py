@@ -106,14 +106,3 @@ class Sniffer:
     def test(self):
         self.command_wrapper("whoami")
 
-if __name__ == "__main__":
-    sniffer = Sniffer("./config.json", False)
-
-    counts = analyze("./new_packets/packet_capture198.pcap", sniffer.filters)
-
-    logger.info("Loaded config:\n" + pformat(counts))
-    #sniffer.start_tcpdump()
-    #subprocess.run(["ls"], capture_output=False) 
-
-    #sniffer.start_rsync()
-
